@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../services/axios-Instance";
-import { Pencil, Trash } from "lucide-react"; // Importing icons
+import { Pencil, Trash } from "lucide-react";
 
 const CategoryTable = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -10,6 +10,7 @@ const CategoryTable = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [totalCategories, setTotalCategories] = useState(0);
+  const [refresh, setRefresh] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,12 +33,13 @@ const CategoryTable = () => {
     };
 
     fetchCategories();
-  }, [page, limit]);
+  }, [page, limit, refresh]);
 
   const handleDeleteCategory = async (id: string) => {
     try {
       await axiosInstance.delete(`/api/categories/${id}`);
       setCategories(categories.filter((category) => category.id !== id));
+      setRefresh((prev) => !prev);
     } catch (error) {
       console.error("Error deleting category", error);
       setError("Failed to delete category.");

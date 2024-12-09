@@ -7,13 +7,12 @@ import { categoryRouter } from "./routes/categoryRoutes";
 import morgan from "morgan";
 import sanitizeInput from "./middlewares/xssMiddleware";
 const app = express();
-
 // Middleware
 app.use(express.json());
 app.use(
   cors({
     origin: "*",
-  }),
+  })
 );
 app.use(helmet());
 app.use(morgan("dev"));

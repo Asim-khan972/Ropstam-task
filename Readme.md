@@ -25,3 +25,7 @@ This project provides an API for managing categories in a MERN stack application
 ## Postman Api Collection
 
 https://gold-water-622680.postman.co/workspace/New-Team-Workspace~629f362e-ff95-46c2-a358-5d05e16ca278/collection/22520445-1faa2d5f-ba1f-4163-9cb5-366dca50bb3b?action=share&creator=22520445
+
+## Loom Video
+
+https://www.loom.com/share/b40d87eab85b4582911047ac9c3609e5

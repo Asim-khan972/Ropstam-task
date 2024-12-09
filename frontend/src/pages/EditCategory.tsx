@@ -3,14 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../services/axios-Instance";
 
 const EditCategory: React.FC = () => {
-  const { categoryId } = useParams<{ categoryId: string }>(); // Extract categoryId from URL params
+  const { categoryId } = useParams<{ categoryId: string }>();
   const [categoryName, setCategoryName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch category details on mount
     const fetchCategory = async () => {
       try {
         const response = await axiosInstance.get(

@@ -8,17 +8,17 @@ const CreateCar: React.FC = () => {
     model: "",
     make: "",
     registrationNo: "",
-    category: "", // Initially empty, will hold the selected category ID
+    category: "",
   });
   const [loading, setLoading] = useState(false);
-  const [formLoading, setFormLoading] = useState(true); // New state for form loading
+  const [formLoading, setFormLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [categories, setCategories] = useState<any[]>([]); // Holds the list of categories
+  const [categories, setCategories] = useState<any[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
-      setFormLoading(true); // Start form loading
+      setFormLoading(true);
       try {
         const response = await axiosInstance.get("/api/categories/");
         setCategories(response.data.categories);
@@ -26,7 +26,7 @@ const CreateCar: React.FC = () => {
         console.error("Error fetching categories", error);
         setError("Failed to load categories.");
       } finally {
-        setFormLoading(false); // End form loading
+        setFormLoading(false);
       }
     };
 
@@ -74,7 +74,6 @@ const CreateCar: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
       {formLoading ? (
-        // Loader while fetching categories
         <div className="flex justify-center items-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-gray-900"></div>
         </div>
@@ -115,7 +114,6 @@ const CreateCar: React.FC = () => {
                 )
               )}
 
-              {/* Dropdown for selecting category */}
               <div>
                 <label htmlFor="category" className="sr-only">
                   Category

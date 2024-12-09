@@ -15,7 +15,7 @@ const SignUp: React.FC = () => {
     setIsLoading(true);
     setError("");
     try {
-      const response = await axiosInstance.post("/api/api/register", {
+      const response = await axiosInstance.post("/api/auth/register", {
         name,
         email,
       });
@@ -52,7 +52,7 @@ const SignUp: React.FC = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+              className="w-full p-2 border border-gray-300 rounded-md "
               placeholder="Enter your full name"
               required
             />
@@ -69,7 +69,7 @@ const SignUp: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+              className="w-full p-2 border border-gray-300 rounded-md "
               placeholder="Enter your email"
               required
             />

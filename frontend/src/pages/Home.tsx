@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
 const Home: React.FC = () => {
-  const { token } = useSelector((state: RootState) => state.auth); // Access token from Redux store
+  const { token } = useSelector((state: RootState) => state.auth);
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">

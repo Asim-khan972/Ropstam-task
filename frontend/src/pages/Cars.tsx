@@ -31,14 +31,20 @@ const Cars = () => {
       setLoading(false);
     }
   };
-
   const handleSort = (column: string) => {
-    if (sort === column) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSort(column);
-      setSortOrder("asc");
-    }
+    setSort((prevSort) => {
+      if (prevSort === column) {
+        setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
+        console.log(
+          `Sorting by: ${column} Order: ${sortOrder === "asc" ? "desc" : "asc"}`
+        );
+        return column;
+      } else {
+        setSortOrder("asc");
+        console.log(`Sorting by: ${column} Order: asc`);
+        return column;
+      }
+    });
   };
 
   const handleDeleteCar = async (id: string) => {
@@ -49,6 +55,8 @@ const Cars = () => {
       console.error("Error deleting car:", error);
     }
   };
+
+  console.log("..............", sort, sortOrder);
 
   return (
     <div className="p-8 min-h-screen flex flex-col">
@@ -85,7 +93,9 @@ const Cars = () => {
                       {field.charAt(0).toUpperCase() + field.slice(1)}
                       {sort === field && (
                         <span
-                          className={`ml-2 ${sortOrder === "asc" ? "↑" : "↓"}`}
+                          className={`ml-2 text-sm text-gray-600 ${
+                            sortOrder === "asc" ? "↑" : "↓"
+                          }`}
                         ></span>
                       )}
                     </th>

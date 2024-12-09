@@ -9,11 +9,11 @@ const EditCar: React.FC = () => {
     model: "",
     make: "",
     registrationNo: "",
-    category: "", // Initially empty, will hold the selected category ID
+    category: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [categories, setCategories] = useState<any[]>([]); // Holds the list of categories
+  const [categories, setCategories] = useState<any[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const EditCar: React.FC = () => {
         const carResponse = await axiosInstance.get(`/api/cars/${id}`);
         setFormData({
           ...carResponse.data,
-          category: carResponse.data.category?._id, // Assuming category is an object with _id
+          category: carResponse.data.category?._id,
         });
       } catch (error) {
         console.error("Error fetching data", error);
@@ -120,7 +120,6 @@ const EditCar: React.FC = () => {
               )
             )}
 
-            {/* Dropdown for selecting category */}
             <div>
               <label htmlFor="category" className="sr-only">
                 Category
